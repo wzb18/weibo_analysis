@@ -9,11 +9,11 @@ fans1 <- read.csv('fans.follow.count.txt',encoding='UTF-8',header=F)
 fans2 <- readLines('fans.p.txt',encoding='UTF-8')
 id <- grep('; ',grep('>>> ',fans2,value=T),value=T)
 start <- which(fans2%in%id)
-end <- c(start[-1]-1,length(start))
+end <- c(start[-1]-1,length(fans2))
 fans2.list <- lapply(1:length(start),function(i){
   fans2[start[i]:end[i]]
 })
-fans2.list <- fans2.list[-4997]
+##fans2.list <- fans2.list[-4997]
 
 info <- lapply(fans2.list,function(x){
   x[3:(grep('>>>>>> Fans:',x)-1)]
